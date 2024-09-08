@@ -1,0 +1,3 @@
+Парсинг данных(Python-playwright)
+1. Страница https://www.python.org/downloads/ - спарсить таблицу «Python releases by version number» с заголовками «Release version», «Release date», «Download»(полная ссылка), «Release Notes»(полная ссылка);
+2. Формат выходного файла - данные должны сохраняться в формате .xlsx
