@@ -25,19 +25,19 @@ def run(pw: Playwright):
 
 
 def parse_table_to_list(html_block, locator="span"):
-    t_data = []
+    table_data = []
     for table_item in html_block:
         html_block = table_item.locator(f"{locator}")
         for span_element in html_block.all():
-            a_element = span_element.locator("a")
-            if a_element.is_visible() and a_element.inner_text().find("Python") == -1:
-                if a_element.get_attribute("href").find("downloads") != -1:
-                    t_data.append(f"https://www.python.org{a_element.get_attribute("href")}")
+            href_element = span_element.locator("a")
+            if href_element.is_visible() and href_element.inner_text().find("Python") == -1:
+                if href_element.get_attribute("href").find("downloads") != -1:
+                    table_data.append(f"https://www.python.org{href_element.get_attribute("href")}")
                 else:
-                    t_data.append(a_element.get_attribute("href"))
+                    table_data.append(href_element.get_attribute("href"))
             else:
-                t_data.append(span_element.inner_text())
-    return t_data
+                table_data.append(span_element.inner_text())
+    return table_data
 
 
 with sync_playwright() as playwright:
